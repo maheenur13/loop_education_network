@@ -16,7 +16,7 @@ export const Header: FC = () => {
 					</Col>
 					<Col ms={8} className="d-flex justify-content-end">
 						<NavItemWithIcon href="/newsfeed" path={Home} width={22} title="HOME" />
-						<NavItemWithIcon href="" path={books} width={22} title="FIND COURSE" />
+						<NavItemWithIcon href="/all-courses" path={books} width={22} title="FIND COURSE" />
 						<NavItemWithIcon href="" path={userSearch} width={22} title="RESEARCH" />
 						<NavItemWithIcon href="" path={project} width={22} title="PROJECT" />
 						<NavItemWithIcon href="" path={userBold} width={22} title="CAREER" />

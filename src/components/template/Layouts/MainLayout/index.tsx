@@ -8,9 +8,8 @@ export const MainLayout: FC = ({ children }) => {
 		<Wrapper>
 			<Header />
 			<main className="MainComponent">
-				<Container className="w-100 mx-auto">{children}</Container>
+				<Container className="w-100 mx-auto text-light">{children}</Container>
 			</main>
-
 			{/* <Footer /> */}
 		</Wrapper>
 	);

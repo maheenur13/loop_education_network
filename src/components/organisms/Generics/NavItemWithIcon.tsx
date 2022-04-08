@@ -1,25 +1,31 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Link, LinkProps } from '@components/atoms';
 import Icon, { IconProps } from '@libs/icons';
+import { useRouter } from 'next/router';
 import { FC, MutableRefObject } from 'react';
 import styled from 'styled-components';
 
 export const NavItemWithIcon: FC<PropsType> = ({ path, width, title, href, ...rest }) => {
-	return (
-		<Wrapper href={href} {...rest}>
-			<div>
-				<Icon path={path} width={width} fill="var(--bs-light)" />
-			</div>
-			<div>
-				<Title>{title}</Title>
-			</div>
-		</Wrapper>
-	);
+    const { pathname } = useRouter();
+    // console.log('ohooo', href);
+
+    return (
+        <Wrapper href={href} {...rest}>
+            <div className={pathname === href ? 'active' : ''}>
+                <div>
+                    <Icon path={path} width={width} fill={pathname === href ? 'var(--bs-primary)' : 'var(--bs-light)'} />
+                </div>
+                <div>
+                    <Title className='Title'>{title}</Title>
+                </div>
+            </div>
+        </Wrapper>
+    );
 };
 
 interface PropsType extends LinkProps, Pick<IconProps, 'path' | 'width' | 'height' | 'fill'> {
-	title: string;
-	ref?: MutableRefObject<any>;
+    title: string;
+    ref?: MutableRefObject<any>;
 }
 
 const Title = styled.p`
@@ -37,6 +43,12 @@ const Wrapper = styled(Link)`
 	align-items: center;
 	color: var(--bs-primary);
 	text-decoration: none;
+    .active {
+        border-bottom: 2px solid var(--bs-primary);
+        .Title {
+            color: var(--bs-primary);
+        }
+    }
 
 	/* border: 1px solid; */
 `;

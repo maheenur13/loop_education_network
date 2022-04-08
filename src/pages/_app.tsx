@@ -9,6 +9,8 @@ import nProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import 'swiper/css';
+import 'swiper/css/bundle';
 import '../../public/scss/app.scss';
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -39,7 +41,7 @@ MyApp.getInitialProps = async (appContext: AppContext) => {
 			try {
 				const { success, data } = await authAPI.validateAuth(token, ctx);
 				if (success && data?.token) ctx.authUser = data;
-			} catch (error) {}
+			} catch (error) { }
 		}
 	} else if (typeof window !== 'undefined') {
 		const {
