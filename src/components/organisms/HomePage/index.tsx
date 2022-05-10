@@ -1,10 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { postDataType } from '@libs/api/interfaces';
 import { FC } from 'react';
 import { Card, Col, Row } from 'react-bootstrap';
 import styled from 'styled-components';
 import { NewsCard } from '../Generics';
 
-export const HomePage: FC<any> = ({ data }) => {
+type PropsType = {
+	data: postDataType[];
+}
+export const HomePage: FC<PropsType> = ({ data }) => {
 	// console.log(data);
 	return (
 		<Row className="my-3">
@@ -38,3 +42,5 @@ const RightSidebar = styled(Card)`
 	position: sticky;
 	top: 0;
 `;
+
+
