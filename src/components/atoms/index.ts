@@ -1,4 +1,5 @@
 export * from './Avatar';
+export * from './Badge';
 export * from './Button';
 export * from './Card';
 export * from './Dropdown';
@@ -7,3 +8,4 @@ export type { ElementBorders } from './interfaces';
 export * from './Link';
 export * from './Pagination';
 export * from './Tabs';
+export * from './Video';

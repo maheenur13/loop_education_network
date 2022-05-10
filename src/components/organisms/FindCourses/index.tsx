@@ -1,12 +1,12 @@
 import { courseData } from '@utils/constants';
 import { FC } from 'react';
-import { CourseCard } from '../Generics';
+import { CourseCarousel } from '../Generics';
 
-export const AllCoursesPage: FC = () => {
+export const FindCourses: FC = () => {
     return (
         <div>
             <h1 className='text-center mt-4 mb-3'>All courses</h1>
-            <CourseCard courseData={courseData} />
+            <CourseCarousel courseData={courseData} />
         </div>
     );
 };

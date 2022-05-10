@@ -7,7 +7,8 @@ import styled from 'styled-components';
 
 export const NavItemWithIcon: FC<PropsType> = ({ path, width, title, href, ...rest }) => {
     const { pathname } = useRouter();
-    // console.log('ohooo', href);
+    // console.log(pathname);
+    // if (pathname === '/') href = '/newsfeed'
 
     return (
         <Wrapper href={href} {...rest}>

@@ -4,13 +4,13 @@ import { Container } from 'react-bootstrap';
 import styled from 'styled-components';
 
 export const MainLayout: FC = ({ children }) => {
+	// const rel = 'ok';
 	return (
 		<Wrapper>
 			<Header />
 			<main className="MainComponent">
 				<Container className="w-100 mx-auto text-light">{children}</Container>
 			</main>
-			{/* <Footer /> */}
 		</Wrapper>
 	);
 };

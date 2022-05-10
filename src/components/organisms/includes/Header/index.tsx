@@ -15,12 +15,12 @@ export const Header: FC = () => {
 						<Title>Loop Education Network</Title>
 					</Col>
 					<Col ms={8} className="d-flex justify-content-end">
-						<NavItemWithIcon href="/newsfeed" path={Home} width={22} title="HOME" />
-						<NavItemWithIcon href="/all-courses" path={books} width={22} title="FIND COURSE" />
-						<NavItemWithIcon href="" path={userSearch} width={22} title="RESEARCH" />
-						<NavItemWithIcon href="" path={project} width={22} title="PROJECT" />
-						<NavItemWithIcon href="" path={userBold} width={22} title="CAREER" />
-						<NavItemWithIcon href="" path={settingQ} width={22} title="LOOP CREATOR" />
+						<NavItemWithIcon href="/" path={Home} width={22} title="HOME" />
+						<NavItemWithIcon href="/find-courses" path={books} width={22} title="FIND COURSE" />
+						<NavItemWithIcon href="/research-panel" path={userSearch} width={22} title="RESEARCH" />
+						<NavItemWithIcon href="/projects-panel" path={project} width={22} title="PROJECT" />
+						<NavItemWithIcon href="/career" path={userBold} width={22} title="CAREER" />
+						<NavItemWithIcon href="https://loop-tube.com" path={settingQ} width={22} title="LOOP CREATOR" />
 						<LabelDropdown
 							alignRight
 							path={user}

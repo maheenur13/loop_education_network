@@ -1,5 +1,5 @@
 // Base type & interfaces
-export type Variant = 'primary' | 'secondary' | 'success' | 'info' | 'warning' | 'danger' | 'light' | 'dark';
+export type Variant = 'primary' | 'secondary' | 'success' | 'info' | 'warning' | 'danger' | 'light' | 'dark' | 'neon';
 
 export type Colors =
 	| Variant
@@ -16,7 +16,8 @@ export type Colors =
 	| 'white'
 	| 'gray'
 	| 'gray-dark'
-	| 'border';
+	| 'border'
+	| 'neon';
 
 // Element types & interfaces
 export type BadgeVariant = Variant;

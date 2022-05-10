@@ -1,10 +1,10 @@
-import { INewsType } from '@libs/api/interfaces/news';
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { FC } from 'react';
 import { Card, Col, Row } from 'react-bootstrap';
 import styled from 'styled-components';
 import { NewsCard } from '../Generics';
 
-export const HomePage: FC<INewsType> = ({ data }) => {
+export const HomePage: FC<any> = ({ data }) => {
 	// console.log(data);
 	return (
 		<Row className="my-3">

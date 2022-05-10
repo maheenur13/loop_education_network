@@ -1,12 +1,10 @@
-import { Button } from '@components/atoms';
-import { FC } from 'react';
-import { Card, CardGroup } from 'react-bootstrap';
-import styled from 'styled-components';
-import { Navigation, Pagination } from 'swiper';
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Badge, Button } from "@components/atoms";
+import { FC } from "react";
+import { Card } from "react-bootstrap";
+import styled from "styled-components";
 
 type PropsType = {
-    courseData: {
+    data: {
         courseCategory: string;
         courseID: string;
         courseName: string;
@@ -17,69 +15,45 @@ type PropsType = {
             courseRatings: number;
             coursePrice: number;
         };
-    }[]
+    }
 };
 
-export const CourseCard: FC<PropsType> = (props) => {
-    const { courseData } = props;
+export const CourseCard: FC<PropsType> = ({ data }) => {
     return (
-        <Wrapper>
-            <Swiper
-                pagination={{
-                    type: "progressbar",
-                }}
-                slidesPerView={1}
-                spaceBetween={10}
-                navigation={true}
-                modules={[Pagination, Navigation]}
-                className="mySwiper"
-                breakpoints={{
-                    640: {
-                        slidesPerView: 2,
-                        spaceBetween: 20,
-                    },
-                    768: {
-                        slidesPerView: 2,
-                        spaceBetween: 40,
-                    },
-                    1024: {
-                        slidesPerView: 3,
-                        spaceBetween: 50,
-                    },
-                }}
-            >
-                <CardGroup>
-                    {
-                        courseData?.map((courseData, i) => {
-                            return (
-                                <SwiperSlide key={i} >
-                                    <Card className='p-4'>
-                                        <Card.Img src={courseData?.courseData?.courseImage} variant='top' height={220} />
-                                        <Card.Body>
-                                            <Card.Title className='text-light'>{courseData?.courseData?.courseName}</Card.Title>
-                                            <Card.Text>
-                                                Some quick example text to build on the card title and make up the bulk
-                                                of the card&rsquo;s content.
-                                            </Card.Text>
-                                        </Card.Body>
-                                        <Card.Footer>
-                                            <Button className='text-dark'>EXPLORE</Button>
-                                        </Card.Footer>
-                                    </Card>
-                                </SwiperSlide>
-                            )
-                        })
-                    }
-                </CardGroup>
-
-            </Swiper>
-        </Wrapper>
+        <CardWrapper className='p-4'>
+            <Card.Img src={data?.courseData?.courseImage} variant='top' height={170} width={100} />
+            <Card.Body>
+                <Card.Title className='text-light Title mt-3'>{data?.courseData?.courseName}</Card.Title>
+                <Card.Text>
+                    Some quick example text to build on the card title and make up the bulk
+                    of the card&rsquo;s content.
+                </Card.Text>
+            </Card.Body>
+            <Card.Footer>
+                <div className='d-flex justify-content-between align-items-center'>
+                    <div>
+                        <Button className='text-dark py-1 ExploreButton'>EXPLORE</Button>
+                    </div>
+                    <div>
+                        <Badge variant='danger' className='PriceBadge' pill>{data?.courseData?.coursePrice} TK</Badge>
+                    </div>
+                </div>
+            </Card.Footer>
+        </CardWrapper>
     );
 };
 
-const Wrapper = styled.div`
-.card {
-    background-color:var(--bs-dark);
-}
-    /* background-color:var(--bs-dark); */
+const CardWrapper = styled(Card)`
+    /* max-width: 300px; */
+    .Title {
+        font-size: 0.875rem;
+        font-weight: 700;
+        min-height: 2.2rem;
+    }
+    .ExploreButton{
+        font-size: 0.725rem;
+    }
+    .PriceBadge {
+        font-size: 0.725rem;
+    }
 `;

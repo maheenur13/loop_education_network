@@ -2,13 +2,16 @@
 import { HomePage } from '@components/organisms';
 import { MainLayout } from '@components/template/Layouts';
 import { newsAPI } from '@libs/api/news';
+import { homePageData } from '@utils/constants';
 import type { NextPage } from 'next';
 
 const Home: NextPage<any> = ({ data }) => {
+	console.log(data);
+
 	return (
 		<MainLayout>
 			<title>Home | Loop Education Network</title>
-			<HomePage data={data} />
+			<HomePage data={homePageData} />
 		</MainLayout>
 	);
 };
