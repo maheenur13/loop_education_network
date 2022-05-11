@@ -22,7 +22,7 @@ const UserModal: FC<PropsType> = ({ show, setShow }) => {
                 <Modal.Title className="text-center w-100">LOGIN TO YOUR ACCOUNT</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <Tabs
+                <TabsWrapper
                     id="controlled-tab-example"
                     activeKey={key}
                     onSelect={(k) => setKey(k)}
@@ -35,7 +35,7 @@ const UserModal: FC<PropsType> = ({ show, setShow }) => {
                         <p>Reg will show here</p>
                     </Tab>
 
-                </Tabs>
+                </TabsWrapper>
             </Modal.Body>
             <Modal.Footer className='bg-dark'>
                 <div className="d-flex justify-content-center  w-100">
@@ -53,9 +53,10 @@ const Wrapper = styled(Modal)`
     border-radius: 1rem!important;
     width:380px;
     margin:auto;
-}
 
-.modal-content{
+    .modal-title {
+        font-size: 1.15rem;
+    }
     .modal-header  {
         background-color:var(--bs-dark);
         color: var(--bs-light);
@@ -69,6 +70,16 @@ const Wrapper = styled(Modal)`
     }
 }
     
+`;
+
+const TabsWrapper = styled(Tabs)`
+.nav-link {
+    color: var(--bs-dark);
+}
+ .nav-link.active {
+    color: var(--bs-dark);
+    font-weight: 600;
+}
 `;
 
 type PropsType = {

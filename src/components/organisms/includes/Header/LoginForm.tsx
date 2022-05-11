@@ -29,7 +29,7 @@ const LoginForm = () => {
 
             </Row>
             <p className="ForgetText">Forget Password?</p>
-            <Button type="submit" className="mt-2 w-100 text-dark FormSubmitBtn">Login</Button>
+            <Button type="submit" className="mt-2 w-100 text-light border-dark bg-dark FormSubmitBtn">Login</Button>
 
             <p className="FormText">Dont have any account?<span className="text-primary"> Register</span></p>
 
