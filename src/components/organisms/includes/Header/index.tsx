@@ -28,7 +28,7 @@ export const Header: FC = () => {
 						<NavItemWithIcon href="/career" path={userBold} width={22} title="CAREER" />
 						<NavItemWithIcon href="https://loop-tube.com" path={settingQ} width={22} title="LOOP CREATOR" />
 						<NavModalButton title='SIGN IN' handleModalOpen={handleModalOpen} />
-						<UserModal show={show} />
+						<UserModal show={show} setShow={setShow} />
 						{/* <LabelDropdown
 							alignRight
 							path={user}
