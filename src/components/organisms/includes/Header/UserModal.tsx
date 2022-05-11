@@ -6,7 +6,7 @@ import styled from "styled-components";
 import LoginForm from "./LoginForm";
 
 const UserModal: FC<PropsType> = ({ show, setShow }) => {
-    const [key, setKey] = useState('login');
+    const [key, setKey] = useState<string>('login');
     const handleClose = () => {
         setShow(false)
     }
@@ -19,7 +19,7 @@ const UserModal: FC<PropsType> = ({ show, setShow }) => {
             keyboard={false}
         >
             <Modal.Header closeButton>
-                <Modal.Title className="text-center w-100">LOGIN TO YOUR ACCOUNT</Modal.Title>
+                <Modal.Title className="text-center w-100">{key === 'login' ? 'LOGIN TO YOUR ACCOUNT' : key === 'registration' ? 'CREATE YOUR ACCOUNT' : 'Change Your Password'}</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <TabsWrapper
@@ -73,6 +73,7 @@ const Wrapper = styled(Modal)`
 `;
 
 const TabsWrapper = styled(Tabs)`
+
 .nav-link {
     color: var(--bs-dark);
 }
