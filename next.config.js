@@ -3,6 +3,9 @@
 require('dotenv').config();
 const nextConfig = {
 	reactStrictMode: true,
+	images: {
+		domains: ['upload.wikimedia.org'],
+	},
 	env: {
 		nodeENV: process.env.NODE_ENV,
 		newsAPI: process.env.TESLA_NEWS_API,
