@@ -1,4 +1,6 @@
 export * from './app/app.slice';
+export * from './project/project.slice';
+export * from './research/research.slice';
 export {
 	authPopup,
 	authSignIn,

@@ -2,12 +2,13 @@ import { FC, Fragment, useState } from 'react';
 import styled from 'styled-components';
 import { PostOptions } from './PostOptions';
 
-export const CreatePost: FC = () => {
+export const CreatePost: FC<PropsType> = ({ postType }) => {
 	const [showOptions, setShowOptions] = useState(false);
 
 	const handleInputClick = () => {
 		setShowOptions(true);
 	};
+
 	return (
 		<Fragment>
 			<Wrapper className="bg-dark">
@@ -19,10 +20,14 @@ export const CreatePost: FC = () => {
 				</button>
 			</Wrapper>
 
-			<PostOptions show={showOptions} onHide={() => setShowOptions(false)} />
+			<PostOptions postType={postType} show={showOptions} onHide={() => setShowOptions(false)} />
 		</Fragment>
 	);
 };
+
+interface PropsType {
+	postType: 'RESEARCH' | 'PROJECT';
+}
 
 const Wrapper = styled.div`
 	border: 1px solid var(--bs-secondary);

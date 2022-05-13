@@ -7,4 +7,5 @@ export * from './NavItemWithIcon';
 export * from './NavModalButton';
 export * from './NewsCard';
 export * from './PhotoCard';
+export * from './PostCard';
 export * from './VideoCard';

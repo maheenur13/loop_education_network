@@ -1,10 +1,14 @@
+import { addNewProjectPost, addNewResearchPost, ISinglePost } from '@store/actions';
+import { useRouter } from 'next/router';
 import { ChangeEvent, FC, FormEvent, Fragment, useState } from 'react';
 import { Button, Col, FormCheck, FormControl, FormLabel, Modal, Row } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import { postOptionsInitialValues, PostOptionsType } from './constants';
 
-export const PostOptions: FC<PropsType> = ({ show, onHide }) => {
-	const [values, setValues] = useState<PostOptionsType>(postOptionsInitialValues);
+export const PostOptions: FC<PropsType> = ({ show, onHide, postType }) => {
+	const [values, setValues] = useState<ISinglePost>(JSON.parse(JSON.stringify(initialValues)));
+	const dispatch = useDispatch();
+	const router = useRouter();
 
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	const handleChange = (e: ChangeEvent<HTMLInputElement | any>, index?: number) => {
@@ -16,7 +20,7 @@ export const PostOptions: FC<PropsType> = ({ show, onHide }) => {
 			} else if (index >= 0) {
 				obj['team'][index][name] = value;
 			} else if (files) {
-				obj[name] = URL.createObjectURL(files[0]);
+				if (files[0]) obj[name] = URL.createObjectURL(files[0]);
 			} else {
 				obj[name] = value;
 			}
@@ -34,12 +38,22 @@ export const PostOptions: FC<PropsType> = ({ show, onHide }) => {
 		});
 	};
 	const handleClose = () => {
-		setValues(postOptionsInitialValues);
+		setValues(JSON.parse(JSON.stringify(initialValues)));
 		onHide();
 	};
 
 	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
+		if (postType === 'RESEARCH') {
+			dispatch(addNewResearchPost(values));
+			handleClose();
+			router.push(router.asPath);
+		}
+		if (postType === 'PROJECT') {
+			dispatch(addNewProjectPost(values));
+			handleClose();
+			router.push(router.asPath);
+		}
 	};
 
 	return (
@@ -77,13 +91,7 @@ export const PostOptions: FC<PropsType> = ({ show, onHide }) => {
 
 						<Col md={6}>
 							<FormLabel>Upload PDF</FormLabel>
-							<FormControl
-								type="file"
-								name="pdf"
-								accept="application/pdf"
-								onChange={handleChange}
-								required
-							/>
+							<FormControl type="file" name="pdf" accept="application/pdf" onChange={handleChange} />
 						</Col>
 
 						<Col md={8}>
@@ -213,6 +221,7 @@ export const PostOptions: FC<PropsType> = ({ show, onHide }) => {
 interface PropsType {
 	show?: boolean;
 	onHide?: () => void;
+	postType: 'RESEARCH' | 'PROJECT';
 }
 
 const Wrapper = styled(Modal)`
@@ -229,3 +238,21 @@ const Wrapper = styled(Modal)`
 		}
 	}
 `;
+
+const initialValues: ISinglePost = {
+	title: '',
+	image: '',
+	pdf: '',
+	description: '',
+	link: '',
+	type: 'SINGLE',
+	team: [
+		{
+			name: '',
+			educationInstitute: '',
+		},
+	],
+	supervisorName: '',
+	supervisorInstitute: '',
+	supervisorSubject: '',
+};
