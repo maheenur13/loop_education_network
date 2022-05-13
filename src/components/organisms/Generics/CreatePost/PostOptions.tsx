@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, Fragment, useState } from 'react';
+import { ChangeEvent, FC, FormEvent, Fragment, useState } from 'react';
 import { Button, Col, FormCheck, FormControl, FormLabel, Modal, Row } from 'react-bootstrap';
 import styled from 'styled-components';
 import { postOptionsInitialValues, PostOptionsType } from './constants';
@@ -8,13 +8,15 @@ export const PostOptions: FC<PropsType> = ({ show, onHide }) => {
 
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	const handleChange = (e: ChangeEvent<HTMLInputElement | any>, index?: number) => {
-		const { name, value, id, checked } = e.target;
+		const { name, value, id, checked, files } = e.target;
 		setValues((prevState) => {
 			const obj = { ...prevState };
 			if (checked) {
-				obj['type'] = id as 'SINGLE' | 'MANY';
+				obj[name] = id as 'SINGLE' | 'MANY';
 			} else if (index >= 0) {
 				obj['team'][index][name] = value;
+			} else if (files) {
+				obj[name] = URL.createObjectURL(files[0]);
 			} else {
 				obj[name] = value;
 			}
@@ -36,13 +38,17 @@ export const PostOptions: FC<PropsType> = ({ show, onHide }) => {
 		onHide();
 	};
 
+	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+	};
+
 	return (
 		<Wrapper show={show} onHide={handleClose} size="lg">
 			<Modal.Header closeButton>
 				<h5 className="mb-0">Create a post</h5>
 			</Modal.Header>
 			<Modal.Body>
-				<form autoComplete="off" autoCorrect="off">
+				<form autoComplete="off" autoCorrect="off" onSubmit={handleSubmit}>
 					<Row>
 						<Col md={6}>
 							<FormLabel>Title</FormLabel>
@@ -51,20 +57,33 @@ export const PostOptions: FC<PropsType> = ({ show, onHide }) => {
 								name="title"
 								value={values.title}
 								onChange={handleChange}
+								required
 							/>
 						</Col>
 						<Col md={6}>
 							<FormLabel>Upload Image</FormLabel>
-							<FormControl type="file" accept="image/*" placeholder="Upload Image" />
+							<FormControl type="file" accept="image/*" name="image" onChange={handleChange} required />
 						</Col>
 						<Col md={6}>
 							<FormLabel>Link</FormLabel>
-							<FormControl placeholder="Link" name="link" value={values.link} onChange={handleChange} />
+							<FormControl
+								placeholder="Link"
+								name="link"
+								value={values.link}
+								onChange={handleChange}
+								required
+							/>
 						</Col>
 
 						<Col md={6}>
 							<FormLabel>Upload PDF</FormLabel>
-							<FormControl type="file" accept="application/pdf" />
+							<FormControl
+								type="file"
+								name="pdf"
+								accept="application/pdf"
+								onChange={handleChange}
+								required
+							/>
 						</Col>
 
 						<Col md={8}>
@@ -76,6 +95,7 @@ export const PostOptions: FC<PropsType> = ({ show, onHide }) => {
 								name="description"
 								value={values.description}
 								onChange={handleChange}
+								required
 							/>
 						</Col>
 
@@ -121,6 +141,7 @@ export const PostOptions: FC<PropsType> = ({ show, onHide }) => {
 										name="name"
 										value={name}
 										onChange={(e) => handleChange(e, i)}
+										required
 									/>
 								</Col>
 								<Col md={6}>
@@ -130,6 +151,7 @@ export const PostOptions: FC<PropsType> = ({ show, onHide }) => {
 										name="educationInstitute"
 										value={educationInstitute}
 										onChange={(e) => handleChange(e, i)}
+										required
 									/>
 								</Col>
 								<Col md={1}>
@@ -154,6 +176,7 @@ export const PostOptions: FC<PropsType> = ({ show, onHide }) => {
 								name="supervisorName"
 								value={values.supervisorName}
 								onChange={handleChange}
+								required
 							/>
 						</Col>
 						<Col md={6}>
@@ -163,6 +186,7 @@ export const PostOptions: FC<PropsType> = ({ show, onHide }) => {
 								name="supervisorInstitute"
 								value={values.supervisorInstitute}
 								onChange={handleChange}
+								required
 							/>
 						</Col>
 						<Col md={6}>
@@ -172,11 +196,14 @@ export const PostOptions: FC<PropsType> = ({ show, onHide }) => {
 								name="supervisorSubject"
 								value={values.supervisorSubject}
 								onChange={handleChange}
+								required
 							/>
 						</Col>
 					</Row>
 
-					<Button className="d-block w-100 mt-3">Post</Button>
+					<Button type="submit" className="d-block w-100 mt-3">
+						Post
+					</Button>
 				</form>
 			</Modal.Body>
 		</Wrapper>

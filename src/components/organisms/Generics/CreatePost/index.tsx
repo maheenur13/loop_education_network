@@ -36,7 +36,6 @@ const Wrapper = styled.div`
 
 		& > img {
 			border-radius: 50rem;
-			background-color: red;
 			object-fit: cover;
 			width: 3rem;
 			height: 3rem;
