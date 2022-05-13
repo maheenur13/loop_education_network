@@ -1,5 +1,5 @@
 /* eslint-disable indent */
-import { initialErrors, initialValues } from '@components/templates/PasswordUpdate';
+import { initialErrors, initialValues } from '@components/organisms/includes/Header/ForgotPass';
 import { formatValidatorKey } from '@utils/helpers';
 
 export const changePasswordValidations = (values: Partial<typeof initialValues>): Partial<typeof initialErrors> => {

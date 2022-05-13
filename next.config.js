@@ -7,6 +7,7 @@ const nextConfig = {
 		nodeENV: process.env.NODE_ENV,
 		newsAPI: process.env.TESLA_NEWS_API,
 		publicURL: process.env.PUBLIC_URL,
+		apiAuthURL: process.env.API_AUTH_URL,
 	},
 };
 

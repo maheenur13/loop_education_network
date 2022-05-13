@@ -18,6 +18,8 @@ class AuthAPI extends BaseAPI {
 	resetPassword = (mobileNumber: string, password: string, code: string) =>
 		this.post<BR<string>>('auth/update-password', { mobileNumber, password, code });
 
+	login = (phoneNumber: string, password: string) => this.post<BR<IAuth>>('auth/login', { phoneNumber, password });
+
 	sellerRegister = (payload: Record<string, string>) => {
 		return this.post<BR<string>>('auth/seller_registration', payload);
 	};

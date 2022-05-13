@@ -3,7 +3,9 @@ import { google } from "@libs/icons";
 import { Dispatch, FC, SetStateAction, useState } from "react";
 import { Modal, Tab, Tabs } from "react-bootstrap";
 import styled from "styled-components";
+import ForgotPass from "./ForgotPass";
 import LoginForm from "./LoginForm";
+import Registration from "./Registration";
 
 const UserModal: FC<PropsType> = ({ show, setShow }) => {
     const [key, setKey] = useState<string>('login');
@@ -22,20 +24,22 @@ const UserModal: FC<PropsType> = ({ show, setShow }) => {
                 <Modal.Title className="text-center w-100">{key === 'login' ? 'LOGIN TO YOUR ACCOUNT' : key === 'registration' ? 'CREATE YOUR ACCOUNT' : 'Change Your Password'}</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <TabsWrapper
-                    id="controlled-tab-example"
-                    activeKey={key}
-                    onSelect={(k) => setKey(k)}
-                    className="mb-3"
-                >
-                    <Tab eventKey="login" title="Login">
-                        <LoginForm />
-                    </Tab>
-                    <Tab eventKey="registration" title="Registration">
-                        <p>Reg will show here</p>
-                    </Tab>
-
-                </TabsWrapper>
+                {
+                    key === 'forgot-pass' ? <ForgotPass setKey={setKey} /> :
+                        <TabsWrapper
+                            id="controlled-tab-example"
+                            activeKey={key}
+                            onSelect={(k) => setKey(k)}
+                            className="mb-3"
+                        >
+                            <Tab eventKey="login" title="Login">
+                                <LoginForm setKey={setKey} />
+                            </Tab>
+                            <Tab eventKey="registration" title="Registration">
+                                <Registration setKey={setKey} />
+                            </Tab>
+                        </TabsWrapper>
+                }
             </Modal.Body>
             <Modal.Footer className='bg-dark'>
                 <div className="d-flex justify-content-center  w-100">
@@ -51,7 +55,7 @@ export default UserModal;
 const Wrapper = styled(Modal)`
 .modal-content {
     border-radius: 1rem!important;
-    width:380px;
+    width:400px;
     margin:auto;
 
     .modal-title {

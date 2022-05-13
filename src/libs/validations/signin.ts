@@ -1,28 +1,20 @@
 /* eslint-disable indent */
+import { loginInitialErrors, loginInitialValues } from '@utils/constants';
+import { formatValidatorKey } from '@utils/helpers';
 
-import { isPhoneNumber } from '@utils/helpers';
+export const loginValidation = (values: Partial<typeof loginInitialValues>): Partial<typeof loginInitialErrors> => {
+	const errors: Partial<typeof loginInitialErrors> = {};
 
-export const validations = (name: string, value: string | boolean): string => {
-	let errors: string | null = null;
-
-	switch (name) {
-		case 'userID':
-			if (!value) {
-				errors = 'Phone number is required';
-			} else if (value && !isPhoneNumber(String(value))) {
-				errors = 'Phone number is invalid';
-			} else {
-				errors = null;
+	if (values && Object.keys(values).length > 0) {
+		for (const [key, value] of Object.entries(values)) {
+			if (key in loginInitialErrors) {
+				if (!value) {
+					errors[key] = `${formatValidatorKey(key)} is required`;
+				} else {
+					errors[key] = null;
+				}
 			}
-			break;
-
-		case 'password':
-			if (!value) {
-				errors = 'Password is required';
-			} else {
-				errors = null;
-			}
-			break;
+		}
 	}
 
 	return errors;
