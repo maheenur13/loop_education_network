@@ -62,8 +62,6 @@ export const PostOptions: FC<PropsType> = ({ show, onHide, postType }) => {
 		}
 	};
 
-	console.log(values);
-
 	return (
 		<Wrapper show={show} onHide={handleClose} size="lg">
 			<Modal.Header closeButton>
@@ -99,7 +97,13 @@ export const PostOptions: FC<PropsType> = ({ show, onHide, postType }) => {
 
 						<Col md={6}>
 							<FormLabel>Upload PDF</FormLabel>
-							<FormControl type="file" name="pdf" accept="application/pdf" onChange={handleChange} />
+							<FormControl
+								type="file"
+								name="pdf"
+								accept="application/pdf"
+								onChange={handleChange}
+								required
+							/>
 						</Col>
 
 						<Col md={8}>

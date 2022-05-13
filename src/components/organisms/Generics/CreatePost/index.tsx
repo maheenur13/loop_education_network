@@ -1,3 +1,5 @@
+import { Image } from '@components/atoms';
+import Link from 'next/link';
 import { FC, Fragment, useState } from 'react';
 import styled from 'styled-components';
 import { PostOptions } from './PostOptions';
@@ -12,9 +14,14 @@ export const CreatePost: FC<PropsType> = ({ postType }) => {
 	return (
 		<Fragment>
 			<Wrapper className="bg-dark">
-				<a href="/" className="avatar_section">
-					<img src="https://www.hollywoodreporter.com/wp-content/uploads/2019/03/avatar-publicity_still-h_2019.jpg?w=1024" />
-				</a>
+				<Link href="/">
+					<a className="avatar_section">
+						<Image
+							src="https://www.hollywoodreporter.com/wp-content/uploads/2019/03/avatar-publicity_still-h_2019.jpg?w=1024"
+							alt=""
+						/>
+					</a>
+				</Link>
 				<button className="post_btn" onClick={handleInputClick}>
 					Start a post
 				</button>
