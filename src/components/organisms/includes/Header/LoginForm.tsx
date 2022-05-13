@@ -2,7 +2,7 @@ import { Button, FormInput } from '@components/atoms';
 import { authAPI } from '@libs/api';
 import { useForm } from '@libs/hooks';
 import { loginValidation } from '@libs/validations';
-import { getUserState } from '@store/actions';
+import { authPopup, getUserState } from '@store/actions';
 import { setAuthUser } from '@store/user/user.actions';
 import { loginInitialErrors, loginInitialValues } from '@utils/constants';
 import { useRouter } from 'next/router';
@@ -27,20 +27,21 @@ const LoginForm: FC<PropsType> = ({ setKey }) => {
     }, []);
 
     const handleFormSubmit = async () => {
-        console.log('oho');
+        // console.log('oho');
 
         setLoading(true);
         try {
             const { success, data, message } = await authAPI.login(values?.phoneNumber, values?.password);
             if (success) {
-                console.log(data);
-
+                // console.log(data);
                 setAuthUser(data);
                 if (!isActive) router.push(router.query?.redirect ? String(router.query.redirect) : '/');
             } else {
                 setErrors((prevState) => ({ ...prevState, phoneNumber: String(message) }));
+                setLoading(false);
             }
         } catch (error) {
+            // setLoading(false);
         } finally {
             if (_isMounted.current) {
                 setLoading(false);
@@ -83,13 +84,18 @@ const LoginForm: FC<PropsType> = ({ setKey }) => {
 
                     />
                 </Col>
-
             </Row>
-            <p className="ForgetText" onClick={() => setKey('forgot-pass')}>Forget Password?</p>
-            <Button type="submit" className="mt-2 w-100 text-light border-dark bg-dark FormSubmitBtn">Login</Button>
+            <p className="ForgetText" onClick={() => {
+                if (isActive) {
+                    dispatch(authPopup({ isActive: true, type: 'forgot-password' }));
+                }
+                else {
+                    setKey('forgot-pass');
+                }
+            }}>Forget Password?</p>
+            <Button type="submit" className="mt-2 w-100 text-light border-dark bg-dark FormSubmitBtn" disabled={isLoading}>{isLoading ? 'please wait' : 'Login'}</Button>
 
             <p className="FormText">Dont have any account?<span className="text-primary" onClick={() => setKey('registration')}> Register</span></p>
-
         </Wrapper>
     );
 };

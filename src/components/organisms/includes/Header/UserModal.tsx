@@ -1,7 +1,9 @@
 import { IconButton } from "@components/molecules";
 import { google } from "@libs/icons";
+import { authPopup, getUserState } from "@store/actions";
 import { Dispatch, FC, SetStateAction, useState } from "react";
 import { Modal, Tab, Tabs } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import ForgotPass from "./ForgotPass";
 import LoginForm from "./LoginForm";
@@ -12,11 +14,20 @@ const UserModal: FC<PropsType> = ({ show, setShow }) => {
     const handleClose = () => {
         setShow(false)
     }
+    const dispatch = useDispatch();
+    const {
+        popup: { isActive },
+    } = useSelector(getUserState);
+
     return (
         <Wrapper
             size="sm"
-            show={show}
-            onHide={handleClose}
+            show={show || isActive}
+            onHide={() => {
+                () => dispatch(authPopup({ isActive: false, type: null }))
+                handleClose();
+
+            }}
             backdrop="static"
             keyboard={false}
         >
