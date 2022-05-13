@@ -1,9 +1,11 @@
 import { addNewProjectPost, addNewResearchPost, ISinglePost } from '@store/actions';
+import { generateUid } from '@utils/helpers';
 import { useRouter } from 'next/router';
 import { ChangeEvent, FC, FormEvent, Fragment, useState } from 'react';
 import { Button, Col, FormCheck, FormControl, FormLabel, Modal, Row } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
+import { initialValues } from './constants';
 
 export const PostOptions: FC<PropsType> = ({ show, onHide, postType }) => {
 	const [values, setValues] = useState<ISinglePost>(JSON.parse(JSON.stringify(initialValues)));
@@ -44,17 +46,23 @@ export const PostOptions: FC<PropsType> = ({ show, onHide, postType }) => {
 
 	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
+		const uid = generateUid();
+		const time = new Date().toISOString();
+		const payload = { ...values, id: uid, createdAt: time };
+
 		if (postType === 'RESEARCH') {
-			dispatch(addNewResearchPost(values));
+			dispatch(addNewResearchPost(payload));
 			handleClose();
 			router.push(router.asPath);
 		}
 		if (postType === 'PROJECT') {
-			dispatch(addNewProjectPost(values));
+			dispatch(addNewProjectPost(payload));
 			handleClose();
 			router.push(router.asPath);
 		}
 	};
+
+	console.log(values);
 
 	return (
 		<Wrapper show={show} onHide={handleClose} size="lg">
@@ -238,21 +246,3 @@ const Wrapper = styled(Modal)`
 		}
 	}
 `;
-
-const initialValues: ISinglePost = {
-	title: '',
-	image: '',
-	pdf: '',
-	description: '',
-	link: '',
-	type: 'SINGLE',
-	team: [
-		{
-			name: '',
-			educationInstitute: '',
-		},
-	],
-	supervisorName: '',
-	supervisorInstitute: '',
-	supervisorSubject: '',
-};

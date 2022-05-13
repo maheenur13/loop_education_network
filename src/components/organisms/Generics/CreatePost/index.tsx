@@ -30,8 +30,8 @@ interface PropsType {
 }
 
 const Wrapper = styled.div`
-	border: 1px solid var(--bs-secondary);
-	border-radius: 1rem;
+	border: 1px solid rgba(0, 0, 0, 0.125);
+	border-radius: 0.25rem;
 	display: flex;
 	align-items: center;
 	padding: 1.5rem 1rem;
@@ -52,14 +52,13 @@ const Wrapper = styled.div`
 		box-shadow: none;
 		background-color: var(--bs-white);
 		border: 1px solid var(--bs-secondary);
-		border-radius: 1rem;
+		border-radius: 0.5rem;
 		padding: 0.5rem 1rem;
 		text-align: left;
 
 		&:hover {
 			cursor: pointer;
-			color: var(--bs-white);
-			background-color: var(--bs-gray-600);
+			background-color: #ffffffc5;
 		}
 	}
 `;

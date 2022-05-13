@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { HomePage } from '@components/organisms';
-import { MainLayout } from '@components/template/Layouts';
+import { MainLayout } from '@components/templates/Layouts';
 import { postDataType } from '@libs/api/interfaces';
 import { homePageData } from '@utils/constants';
 import type { NextPage } from 'next';
@@ -27,5 +27,4 @@ export default Home;
 
 type PropsType = {
 	data: postDataType[];
-}
-
+};

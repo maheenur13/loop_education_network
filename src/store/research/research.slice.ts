@@ -10,9 +10,7 @@ const slice = createSlice({
 	initialState,
 	reducers: {
 		addNewResearchPost: (state, action: PayloadAction<ISinglePost>) => {
-			console.log(action.payload);
-
-			state.researchData.push(action.payload);
+			state.researchData.unshift(action.payload);
 		},
 	},
 });
@@ -29,6 +27,8 @@ export interface TeamType {
 }
 
 export interface ISinglePost {
+	id: string;
+	createdAt: string;
 	title: string;
 	image: string;
 	pdf: string;
