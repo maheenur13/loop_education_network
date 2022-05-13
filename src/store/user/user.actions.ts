@@ -40,7 +40,7 @@ export interface IAuth {
 	firstName: string;
 	lastName: string;
 	avatarURL?: string;
-	mobileNumber?: string;
+	phoneNumber?: string;
 	token: string;
 	email?: string;
 }

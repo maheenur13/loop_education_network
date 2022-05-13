@@ -1,12 +1,18 @@
-import { LabelDropdown } from '@components/molecules';
-import { NavItemWithIcon } from '@components/organisms/Generics';
-import { books, Home, project, settingQ, user, userBold, userSearch } from '@libs/icons';
-import { FC } from 'react';
+import { NavItemWithIcon, NavModalButton } from '@components/organisms/Generics';
+import { books, Home, project, settingQ, userBold, userSearch } from '@libs/icons';
+import { FC, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import styled from 'styled-components';
-import DropdownUser from './DropdownUser';
+import UserModal from './UserModal';
 
 export const Header: FC = () => {
+	const [show, setShow] = useState<boolean>(false);
+	const handleModalOpen = () => {
+		console.log('open');
+		setShow(true);
+
+	};
+
 	return (
 		<HeaderWrapper>
 			<Container>
@@ -21,7 +27,9 @@ export const Header: FC = () => {
 						<NavItemWithIcon href="/projects-panel" path={project} width={22} title="PROJECT" />
 						<NavItemWithIcon href="/career" path={userBold} width={22} title="CAREER" />
 						<NavItemWithIcon href="https://loop-tube.com" path={settingQ} width={22} title="LOOP CREATOR" />
-						<LabelDropdown
+						<NavModalButton title='SIGN IN' handleModalOpen={handleModalOpen} />
+						<UserModal show={show} setShow={setShow} />
+						{/* <LabelDropdown
 							alignRight
 							path={user}
 							fill="#ffffff"
@@ -29,7 +37,7 @@ export const Header: FC = () => {
 							label="SIGN IN"
 						>
 							<DropdownUser />
-						</LabelDropdown>
+						</LabelDropdown> */}
 					</Col>
 				</Row>
 			</Container>

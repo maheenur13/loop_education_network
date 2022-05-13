@@ -4,6 +4,7 @@ export * from './Breadcrumbs';
 export * from './Button';
 export * from './Card';
 export * from './Dropdown';
+export * from './Form';
 export * from './Image';
 export type { ElementBorders } from './interfaces';
 export * from './Link';

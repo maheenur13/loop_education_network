@@ -5,7 +5,7 @@ import { Card } from "react-bootstrap";
 
 export const ArticleCard: FC<any> = ({ data }) => {
     // const { } = props;
-    // console.log('mahee', props);
+    console.log('mahee', data);
 
     return (
         <Card bg="dark" style={{ width: '100%', margin: '16px 0' }}>

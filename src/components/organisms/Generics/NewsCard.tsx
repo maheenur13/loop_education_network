@@ -9,8 +9,8 @@ export const NewsCard: FC<any> = ({ data }) => {
 	return (
 		<Wrapper>
 			{data?.map((el, idx) => {
-				if (el?.postType === 'article') return <ArticleCard data={el} key={idx} />
-				if (el?.postType === 'video') return <VideoCard data={el} key={idx} />
+				if (el?.articleType === 'article') return <ArticleCard data={el} key={idx} />
+				if (el?.articleType === 'video') return <VideoCard data={el} key={idx} />
 				// if (el?.postType === 'photo') return <PhotoCard data={el} key={idx} />
 			})}
 		</Wrapper>
