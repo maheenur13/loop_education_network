@@ -5,7 +5,7 @@ export const ProdDetailPrice: FC<PropsType> = ({ regularPrice, discountPrice }) 
 		return (
 			<div className="mb-4">
 				<h5 className="text-secondary">
-					BDT: <s>&#x09F3;{regularPrice}</s>
+					BDT. <s>&#x09F3; {regularPrice}</s>
 				</h5>
 				<h3>
 					Offer Price:&#x09F3;
@@ -16,7 +16,7 @@ export const ProdDetailPrice: FC<PropsType> = ({ regularPrice, discountPrice }) 
 	} else {
 		return (
 			<h3 className="mb-4">
-				BDT:&#x09F3;
+				BDT. &#x09F3;
 				{regularPrice}
 			</h3>
 		);

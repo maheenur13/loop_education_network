@@ -7,7 +7,7 @@ import React from 'react';
 
 const CoursesDetail: NextPage = () => {
 	const router = useRouter();
-	console.log(router?.query?.id);
+	// console.log(router?.query?.id);
 	return (
 		<MainLayout>
 			<title>Courses Detail | Loop Education Network</title>

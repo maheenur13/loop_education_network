@@ -10,7 +10,6 @@ export const Header: FC = () => {
 	const handleModalOpen = () => {
 		console.log('open');
 		setShow(true);
-
 	};
 
 	return (
@@ -22,12 +21,12 @@ export const Header: FC = () => {
 					</Col>
 					<Col ms={8} className="d-flex justify-content-end">
 						<NavItemWithIcon href="/" path={Home} width={22} title="HOME" />
-						<NavItemWithIcon href="/find-courses" path={books} width={22} title="FIND COURSE" />
+						<NavItemWithIcon href="/courses" path={books} width={22} title="FIND COURSE" />
 						<NavItemWithIcon href="/research-panel" path={userSearch} width={22} title="RESEARCH" />
 						<NavItemWithIcon href="/projects-panel" path={project} width={22} title="PROJECT" />
 						<NavItemWithIcon href="/career" path={userBold} width={22} title="CAREER" />
 						<NavItemWithIcon href="https://loop-tube.com" path={settingQ} width={22} title="LOOP CREATOR" />
-						<NavModalButton title='SIGN IN' handleModalOpen={handleModalOpen} />
+						<NavModalButton title="SIGN IN" handleModalOpen={handleModalOpen} />
 						<UserModal show={show} setShow={setShow} />
 						{/* <LabelDropdown
 							alignRight
