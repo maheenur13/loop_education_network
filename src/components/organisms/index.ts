@@ -1,4 +1,4 @@
 export * from './FindCourses';
 export * from './Generics';
-export { HomePage } from './HomePage';
+export { Home } from './Home';
 export * from './includes';

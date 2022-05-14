@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextPageContext } from 'next';
 import { BaseAPI } from './baseAPI';
 import { BR, IAuth, IPayloadGetOTP, IUpdatePassword } from './interfaces';
@@ -20,8 +21,8 @@ class AuthAPI extends BaseAPI {
 
 	login = (phoneNumber: string, password: string) => this.post<BR<IAuth>>('auth/login', { phoneNumber, password });
 
-	sellerRegister = (payload: Record<string, string>) => {
-		return this.post<BR<string>>('auth/seller_registration', payload);
+	userRegister = (payload: any) => {
+		return this.post<BR<string>>('auth/registration', payload);
 	};
 
 	authGetOTP = (payload: IPayloadGetOTP) => this.post<BR<string>>('auth/register/phone', payload);

@@ -4,9 +4,15 @@ export interface IAuth {
 	firstName: string;
 	lastName: string;
 	avatarURL?: string;
-	mobileNumber?: string;
+	phoneNumber?: string;
 	token: string;
 	email?: string;
+	dateOfBirth: string;
+	gender: string;
+	educationalLevel: string;
+	institutionName: string;
+	password?: string;
+	confirmPassword?: string;
 }
 
 export interface IAuthPayload {

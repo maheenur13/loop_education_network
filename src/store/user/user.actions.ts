@@ -43,4 +43,10 @@ export interface IAuth {
 	phoneNumber?: string;
 	token: string;
 	email?: string;
+	dateOfBirth: string;
+	gender: string;
+	educationalLevel: string;
+	institutionName: string;
+	password?: string;
+	confirmPassword?: string;
 }

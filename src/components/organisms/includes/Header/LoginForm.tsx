@@ -33,7 +33,7 @@ const LoginForm: FC<PropsType> = ({ setKey }) => {
         try {
             const { success, data, message } = await authAPI.login(values?.phoneNumber, values?.password);
             if (success) {
-                // console.log(data);
+                console.log(data);
                 setAuthUser(data);
                 if (!isActive) router.push(router.query?.redirect ? String(router.query.redirect) : '/');
             } else {

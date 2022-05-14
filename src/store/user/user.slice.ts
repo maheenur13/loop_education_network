@@ -12,6 +12,11 @@ const initialState: IUserState = {
 		lastName: null,
 		avatarURL: '',
 		mobileNumber: null,
+		dateOfBirth: null,
+		gender: null,
+		educationalLevel: null,
+		institutionName: null,
+		email: null,
 	},
 	isAuthenticate: false,
 };
@@ -64,6 +69,10 @@ type IProfile = {
 	avatarURL?: string;
 	mobileNumber?: string;
 	email?: string;
+	dateOfBirth: string;
+	gender: string;
+	educationalLevel: string;
+	institutionName: string;
 };
 type IUserState = {
 	popup: IPopup;

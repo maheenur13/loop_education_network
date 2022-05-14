@@ -1,15 +1,25 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { postDataType } from '@libs/api/interfaces';
-import { FC } from 'react';
+import { homePageData } from '@utils/constants';
+import { FC, useEffect, useState } from 'react';
 import { Card, Col, Row } from 'react-bootstrap';
 import styled from 'styled-components';
 import { NewsCard } from '../Generics';
 
-type PropsType = {
-	data: postDataType[];
-}
-export const HomePage: FC<PropsType> = ({ data }) => {
+export const Home: FC = () => {
+	const [data, setData] = useState<postDataType[]>();
 	// console.log(data);
+	useEffect(() => {
+		const callData = async () => {
+			try {
+				const data = await homePageData;
+				setData(data);
+			} catch (error) {
+				setData(null);
+			}
+		}
+		callData();
+	})
 	return (
 		<Row className="my-3">
 			<Col md={2}>
@@ -42,5 +52,7 @@ const RightSidebar = styled(Card)`
 	position: sticky;
 	top: 0;
 `;
+
+
 
 

@@ -1,13 +1,13 @@
 /* eslint-disable indent */
-import { loginInitialErrors, loginInitialValues } from '@utils/constants';
+import { regInitialErrors, regInitialValues } from '@utils/constants';
 import { formatValidatorKey, isPhoneNumber } from '@utils/helpers';
 
-export const loginValidation = (values: Partial<typeof loginInitialValues>): Partial<typeof loginInitialErrors> => {
-	const errors: Partial<typeof loginInitialErrors> = {};
+export const regValidation = (values: Partial<typeof regInitialValues>): Partial<typeof regInitialErrors> => {
+	const errors: Partial<typeof regInitialErrors> = {};
 
 	if (values && Object.keys(values).length > 0) {
 		for (const [key, value] of Object.entries(values)) {
-			if (key in loginInitialErrors) {
+			if (key in regInitialErrors) {
 				if (!value) {
 					errors[key] = `${formatValidatorKey(key)} is required`;
 				} else {

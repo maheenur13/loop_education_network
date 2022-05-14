@@ -23,7 +23,7 @@ export const NavItems = styled.ul`
 	margin: 0;
 	padding: 4px 0;
 	border-radius: 0.25rem;
-	background-color: var(--white);
+	background-color: var(--bs-light);
 	box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 4px 11px rgba(0, 0, 0, 0.1);
 	z-index: 99;
 `;

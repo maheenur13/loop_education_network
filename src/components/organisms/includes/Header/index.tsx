@@ -1,8 +1,11 @@
 import { NavItemWithIcon, NavModalButton } from '@components/organisms/Generics';
 import { books, Home, project, settingQ, userBold, userSearch } from '@libs/icons';
+import { getUserState } from '@store/actions';
 import { FC, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
+import LogRegModal from './LogRegModal';
 import UserModal from './UserModal';
 
 export const Header: FC = () => {
@@ -11,6 +14,9 @@ export const Header: FC = () => {
 		console.log('open');
 		setShow(true);
 	};
+	const {
+		isAuthenticate
+	} = useSelector(getUserState);
 
 	return (
 		<HeaderWrapper>
@@ -26,8 +32,8 @@ export const Header: FC = () => {
 						<NavItemWithIcon href="/projects-panel" path={project} width={22} title="PROJECT" />
 						<NavItemWithIcon href="/career" path={userBold} width={22} title="CAREER" />
 						<NavItemWithIcon href="https://loop-tube.com" path={settingQ} width={22} title="LOOP CREATOR" />
-						<NavModalButton title="SIGN IN" handleModalOpen={handleModalOpen} />
-						<UserModal show={show} setShow={setShow} />
+						{!isAuthenticate ? <NavModalButton title="SIGN IN" handleModalOpen={handleModalOpen} /> : <UserModal />}
+						<LogRegModal show={show} setShow={setShow} /> :
 						{/* <LabelDropdown
 							alignRight
 							path={user}
