@@ -1,5 +1,5 @@
 import { CourseDetail } from '@components/organisms/CourseDetail';
-import { MainLayout } from '@components/template/Layouts';
+import { MainLayout } from '@components/templates/Layouts';
 import { courseDetailBreadCrumb, courseDetailData } from '@utils/constants';
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';

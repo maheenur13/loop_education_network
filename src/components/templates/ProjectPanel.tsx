@@ -7,6 +7,8 @@ import { useSelector } from 'react-redux';
 export const ProjectPanel: FC = () => {
 	const { projectData } = useSelector(getProjectState);
 
+	console.log(projectData);
+
 	return (
 		<Row className="justify-content-center my-3">
 			<Col md={6}>

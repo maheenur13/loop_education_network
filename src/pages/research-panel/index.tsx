@@ -1,4 +1,4 @@
-import { MainLayout, ResearchPanelUnit } from '@components/template';
+import { MainLayout, ResearchPanelUnit } from '@components/templates';
 import { NextPage } from 'next';
 
 const ResearchPanel: NextPage = () => {

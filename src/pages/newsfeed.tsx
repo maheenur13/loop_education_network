@@ -1,5 +1,5 @@
 import { HomePage } from '@components/organisms';
-import { MainLayout } from '@components/template/Layouts';
+import { MainLayout } from '@components/templates/Layouts';
 import { NextPage } from 'next';
 
 const NewsFeed: NextPage = () => {

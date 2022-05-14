@@ -1,4 +1,8 @@
-export const postOptionsInitialValues: PostOptionsType = {
+import { ISinglePost } from '@store/actions';
+
+export const initialValues: ISinglePost = {
+	id: '',
+	createdAt: '',
 	title: '',
 	image: '',
 	pdf: '',
@@ -16,20 +20,20 @@ export const postOptionsInitialValues: PostOptionsType = {
 	supervisorSubject: '',
 };
 
-interface TeamType {
-	name: string;
-	educationInstitute: string;
-}
+// interface TeamType {
+// 	name: string;
+// 	educationInstitute: string;
+// }
 
-export interface PostOptionsType {
-	title: string;
-	image: string;
-	pdf: string;
-	description: string;
-	link: string;
-	type: 'SINGLE' | 'MANY';
-	team: TeamType[];
-	supervisorName: string;
-	supervisorInstitute: string;
-	supervisorSubject: string;
-}
+// export interface PostOptionsType {
+// 	title: string;
+// 	image: string;
+// 	pdf: string;
+// 	description: string;
+// 	link: string;
+// 	type: 'SINGLE' | 'MANY';
+// 	team: TeamType[];
+// 	supervisorName: string;
+// 	supervisorInstitute: string;
+// 	supervisorSubject: string;
+// }

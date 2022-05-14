@@ -1,4 +1,4 @@
-import { MainLayout, ProjectPanelUnit } from '@components/template';
+import { MainLayout, ProjectPanelUnit } from '@components/templates';
 // import { MainLayout } from '@components/template/Layouts';
 import { NextPage } from 'next';
 

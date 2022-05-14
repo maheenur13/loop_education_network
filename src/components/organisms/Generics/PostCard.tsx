@@ -1,11 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ISinglePost } from '@store/actions';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { FC } from 'react';
 import { Card } from 'react-bootstrap';
 
 export const PostCard: FC<ISinglePost> = (props) => {
-	const { title, description, image } = props;
+	const { id, title, description, image } = props;
+	const router = useRouter();
 
 	return (
 		<Card bg="dark" style={{ width: '100%', margin: '16px 0' }}>
@@ -13,7 +15,7 @@ export const PostCard: FC<ISinglePost> = (props) => {
 			<Card.Body>
 				<Card.Title className="text-primary">{title}</Card.Title>
 				<Card.Text>{description}</Card.Text>
-				<Link href="#">View Details</Link>
+				<Link href={`${router.pathname}/${id}`}>View Details</Link>
 			</Card.Body>
 		</Card>
 	);
