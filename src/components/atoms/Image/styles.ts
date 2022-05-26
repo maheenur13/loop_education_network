@@ -10,6 +10,13 @@ export const ImgWrapper = styled.img<ImageProps>`
 			`;
 		}
 	}}
+	${({ roundedCircle }) => {
+		if (roundedCircle) {
+			return css`
+				border-radius: 50rem;
+			`;
+		}
+	}}
 
 	${({ fluid }) => {
 		if (fluid) {

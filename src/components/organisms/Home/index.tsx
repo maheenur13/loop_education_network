@@ -24,7 +24,7 @@ export const Home: FC = () => {
 		<Row className="my-3">
 			<Col md={2}>
 				<LeftSidebar className="shadow-sm p-2 text-white" bg="dark">
-					card 1
+					Coming soon...
 				</LeftSidebar>
 			</Col>
 			<Col md={6}>
@@ -34,7 +34,7 @@ export const Home: FC = () => {
 			</Col>
 			<Col md={4}>
 				<RightSidebar className="shadow-sm p-2 text-white" bg="dark">
-					card 3
+					coming soon...
 				</RightSidebar>
 			</Col>
 		</Row>

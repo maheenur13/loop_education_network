@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { NextPageContext } from 'next';
 import { BaseAPI } from './baseAPI';
 import { BR, IAuth, IPayloadGetOTP, IUpdatePassword } from './interfaces';
 
@@ -7,9 +6,7 @@ class AuthAPI extends BaseAPI {
 	constructor(baseURL: string) {
 		super(baseURL);
 	}
-
-	validateAuth = (token: string, ctx?: NextPageContext) =>
-		this.post<BR<IAuth>>('auth/patient-token-verification', { token }, ctx);
+	validateAuth = (token: string) => this.post<BR<IAuth>>('auth/validateUser', { token });
 
 	resetPassSendOTP = (mobileNumber: string) => this.post<BR<string>>('auth/forgot-password', { mobileNumber });
 

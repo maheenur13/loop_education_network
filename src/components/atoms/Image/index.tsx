@@ -7,10 +7,12 @@ export interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
 	fluid?: boolean;
 	thumbnail?: boolean;
 	rounded?: boolean;
+	roundedCircle?: boolean;
 }
 
 Image.defaultProps = {
 	fluid: false,
 	thumbnail: false,
 	rounded: false,
+	roundedCircle: false
 };

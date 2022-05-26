@@ -6,7 +6,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import LogRegModal from './LogRegModal';
-import UserModal from './UserModal';
+import UserDropdown from './UserDropdown';
 
 export const Header: FC = () => {
 	const [show, setShow] = useState<boolean>(false);
@@ -31,9 +31,9 @@ export const Header: FC = () => {
 						<NavItemWithIcon href="/research-panel" path={userSearch} width={22} title="RESEARCH" />
 						<NavItemWithIcon href="/projects-panel" path={project} width={22} title="PROJECT" />
 						<NavItemWithIcon href="/career" path={userBold} width={22} title="CAREER" />
-						<NavItemWithIcon href="https://loop-tube.com" path={settingQ} width={22} title="LOOP CREATOR" />
-						{!isAuthenticate ? <NavModalButton title="SIGN IN" handleModalOpen={handleModalOpen} /> : <UserModal />}
-						<LogRegModal show={show} setShow={setShow} /> :
+						<NavItemWithIcon href="http://localhost:3001/" path={settingQ} width={22} title="LOOP CREATOR" target="_blank" />
+						{!isAuthenticate ? <NavModalButton title="SIGN IN" handleModalOpen={handleModalOpen} /> : <UserDropdown />}
+						<LogRegModal show={show} setShow={setShow} />
 						{/* <LabelDropdown
 							alignRight
 							path={user}
@@ -41,8 +41,9 @@ export const Header: FC = () => {
 							className="ps-0 LabelDropdown"
 							label="SIGN IN"
 						>
-							<DropdownUser />
+							
 						</LabelDropdown> */}
+						{/* <DropdownUser /> */}
 					</Col>
 				</Row>
 			</Container>
